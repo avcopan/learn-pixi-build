@@ -1,0 +1,25 @@
+[workspace]
+channels = ["https://prefix.dev/conda-forge"]
+platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
+preview = ["pixi-build"]
+
+[dependencies]
+hello_world = { path = "." }
+
+[tasks.start]
+cmd = "hello_world"
+description = "A tasks to run the executable that is built by the package section."
+
+[package]
+authors = ["avcopan <avcopan@gmail.com>"]
+description = "Showcases how to create a simple C++ executable with Pixi"
+name = "hello_world"
+version = "0.1.0"
+
+[package.build.backend]
+channels = [
+  "https://prefix.dev/pixi-build-backends",
+  "https://prefix.dev/conda-forge",
+]
+name = "pixi-build-cmake"
+version = "0.1.*"
